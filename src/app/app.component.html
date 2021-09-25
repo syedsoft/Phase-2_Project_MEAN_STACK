@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <div class="col-md-12" style="color: darkgreen; text-align: center;font-style: normal;">
+      <h1>ONLINE PRATICAL QUIZ PORTAL</h1>
+      <p style="color: red; font-style: italic;"> In this portal for developing Knowledge about various general and dynamic questions
+          to enrich the developing more Knowledge about the study materials
+      </p>
+      </div>
+      <hello *ngIf="!begin && !complete"></hello>
+    </div>
+  </div>
+</div>
+<div class="row quiz-row" *ngIf="complete">
+  <div class="col-md-12">
+    <div class="col-md-12" >
+      <div>
+        <h4>Quiz Result: {{score}}/{{questions.length}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row quiz-row" *ngIf="begin">
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <h4>{{currentQuestion.question}}</h4>
+      <div *ngFor="let option of currentQuestion.option">
+        <input class="quiz-radio" type="radio" name="{{currentQuestion.id}}" value="{{option.optionid}}" [(ngModel)]="currentQuestion.selected" />{{option.name}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row quiz-row" *ngIf="!begin" >
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <input class="btn btn-success quiz-btn" type="button" value="{{buttonName}}" (click)="start()"/>
+    </div>
+  </div>
+</div>
+<div class="row quiz-row" *ngIf="begin">
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <input class="btn btn-primary quiz-btn" type="button" *ngIf="(currentIndex + 1) != questions.length" value="Next Question" (click)="next()"/>
+    </div>
+  </div>
+</div>
+<div class="row quiz-row" *ngIf="begin && currentIndex == questions.length - 1">
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <input class="btn btn-success quiz-btn" type="button" value="Submit" (click)="submit()"/>
+    </div>
+  </div>
+</div>

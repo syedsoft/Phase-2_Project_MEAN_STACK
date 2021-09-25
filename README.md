@@ -1,2 +1,2 @@
-# Simple-Angular-Quiz-App
+# Quiz-App
 A simple quiz app as an Angular practice (refresher) project
